@@ -8,3 +8,7 @@ with open("greeting.txt", "r") as f:
 with open("contacts.txt", "w") as f:
     f.write("Felix, 0551234567\n")
     f.write("Ama, 0207654321\n")
+    
+with open("contacts.txt", "r") as f:
+    content = f.read()
+    print(content)
