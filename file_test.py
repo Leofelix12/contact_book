@@ -1,7 +1,8 @@
+contacts = ["Felix, 0551234567","Ama, 0207654321","Wendy, 0243539956", "Naomi, 0501243564" ]
 with open("contacts.txt", "w") as f:
-    f.write("Felix, 0551234567\n")
-    f.write("Ama, 0207654321\n")
-    f.write("Wendy, 0243539956")
+    for contact in contacts:
+        f.write(contact)
+    
     
 with open("contacts.txt", "r") as f:
     content = f.read()
