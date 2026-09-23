@@ -2,6 +2,13 @@ running = True
 
 contacts = []
 
+try:
+    with open("contacts.txt", "r") as f:
+        for line in f:
+            contacts.append(line.strip())
+except FileNotFoundError:
+    pass
+
 while running:
     print("1. Add contact")
     print("2. View contacts")
@@ -14,6 +21,9 @@ while running:
         name = input("Enter name: ")
         phone = input("Enter phone: ")
         contacts.append(name + "," + phone)
+        with open("contacts.txt", "w") as f:
+            for contact in contacts:
+                f.write(contact + "\n")
         print("contact added.")
         
     elif choice == "2":
