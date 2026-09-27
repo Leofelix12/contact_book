@@ -18,9 +18,16 @@ while running:
 
     if choice == "1":
         print("You want to add contact.")
+        
         name = input("Enter name: ")
         phone = input("Enter phone: ")
+
+        while not phone.isdigit():
+            print("Invalid phone number. Numbers only.")
+            phone = input("Enter phone: ")
+        
         contacts.append(name + "," + phone)
+        
         with open("contacts.txt", "w") as f:
             for contact in contacts:
                 f.write(contact + "\n")
