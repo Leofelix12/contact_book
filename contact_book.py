@@ -20,6 +20,11 @@ while running:
         print("You want to add contact.")
         
         name = input("Enter name: ")
+
+        while name.strip() == "":
+            print("Name cannot be empty.")
+            name = input("Enter name: ")
+            
         phone = input("Enter phone: ")
 
         while not phone.isdigit():
