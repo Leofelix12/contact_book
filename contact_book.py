@@ -19,6 +19,7 @@ while running:
     if choice == "1":
         print("You want to add contact.")
         
+        found = False
         name = input("Enter name: ")
 
         while name.strip() == "":
@@ -30,13 +31,21 @@ while running:
         while not phone.isdigit():
             print("Invalid phone number. Numbers only.")
             phone = input("Enter phone: ")
-        
-        contacts.append(name + "," + phone)
-        
-        with open("contacts.txt", "w") as f:
-            for contact in contacts:
-                f.write(contact + "\n")
-        print("contact added.")
+            
+        for contact in contacts:
+            parts = contact.split(",")
+            existing_phone = parts[1]
+            if existing_phone == phone:
+                found = True
+
+        if found:
+            print("This phone number already saved.")
+        else:
+            contacts.append(name + "," + phone)
+            with open("contacts.txt", "w") as f:
+                for contact in contacts:
+                    f.write(contact + "\n")
+            print("contact added.") 
         
     elif choice == "2":
         print("You want to view contacts.")
